@@ -1,0 +1,43 @@
+[2019-01-29T14:04:09.148] [INFO] cheese - 响应时间为:0.009s
+[2019-01-29T14:04:31.207] [INFO] cheese - 响应时间为:0.003s
+[2019-01-29T14:05:09.090] [INFO] cheese - 响应时间为:0.011s
+[2019-01-29T14:05:54.053] [INFO] cheese - 响应时间为:0.009s
+[2019-01-29T14:05:54.781] [INFO] cheese - 响应时间为:0.002s
+[2019-01-29T14:05:55.046] [INFO] cheese - 响应时间为:0.002s
+[2019-01-29T14:05:55.222] [INFO] cheese - 响应时间为:0.002s
+[2019-01-29T14:05:55.386] [INFO] cheese - 响应时间为:0.004s
+[2019-01-29T14:05:55.655] [INFO] cheese - 响应时间为:0.002s
+[2019-01-29T14:05:56.326] [INFO] cheese - 响应时间为:0.004s
+[2019-01-29T14:06:45.518] [INFO] cheese - 响应时间为:0.007s
+[2019-01-29T14:06:46.531] [INFO] cheese - 响应时间为:0.004s
+[2019-01-29T14:08:07.932] [INFO] cheese - 响应时间为:0.007s
+[2019-01-29T14:08:54.896] [INFO] cheese - 响应时间为:0.008s
+[2019-01-29T14:58:49.781] [INFO] cheese - 响应时间为:0.004s
+[2019-01-29T14:59:04.425] [INFO] cheese - 响应时间为:0.004s
+[2019-01-29T14:59:39.872] [INFO] cheese - 响应时间为:0.002s
+[2019-01-29T15:00:38.473] [INFO] cheese - 响应时间为:0.055s
+[2019-01-29T15:01:10.282] [INFO] cheese - 响应时间为:0.003s
+[2019-01-29T15:01:47.524] [INFO] cheese - 响应时间为:0.002s
+[2019-01-29T15:02:08.194] [INFO] cheese - 响应时间为:0.057s
+[2019-01-29T15:03:28.343] [INFO] cheese - 请求参数:/downLoadFile  ,接受到的参数:get===>{"fileId":"5c4ffa7039ea53323c228974"}
+[2019-01-29T15:03:28.361] [INFO] cheese - 响应时间为:0.018s
+[2019-01-29T15:05:08.451] [INFO] cheese - 请求参数:/downLoadFile  ,接受到的参数:get===>{"fileId":"5c4ffa7039ea53323c228974"}
+[2019-01-29T15:05:08.475] [INFO] cheese - 响应时间为:0.024s
+[2019-01-29T15:05:47.530] [INFO] cheese - 响应时间为:0.038s
+[2019-01-29T15:06:03.917] [INFO] cheese - 请求参数:/downLoadFile  ,接受到的参数:get===>{"fileId":"5c4ffb4b4e4d7a2cc4e2edeb"}
+[2019-01-29T15:06:03.921] [INFO] cheese - 响应时间为:0.004s
+[2019-01-29T15:06:59.615] [INFO] cheese - 响应时间为:0.008s
+[2019-01-29T15:07:01.567] [INFO] cheese - 请求参数:/downLoadFile  ,接受到的参数:get===>{"fileId":"5c4ffb4b4e4d7a2cc4e2edeb"}
+[2019-01-29T15:07:01.573] [ERROR] cheese - 发生错误:TypeError: Cannot read property 'originalname' of null
+    at router.get (D:\server\routes\index.js:30:95)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+[2019-01-29T15:07:01.574] [INFO] cheese - 响应时间为:0.006s
+[2019-01-29T15:07:10.436] [INFO] cheese - 请求参数:/downLoadFile  ,接受到的参数:get===>{"fileId":"5c4ffb934e4d7a2cc4e2edec"}
+[2019-01-29T15:07:10.440] [INFO] cheese - 响应时间为:0.004s
+[2019-01-29T15:07:31.477] [INFO] cheese - 响应时间为:0.017s
+[2019-01-29T15:07:39.293] [INFO] cheese - 请求参数:/downLoadFile  ,接受到的参数:get===>{"fileId":"5c4ffbb34e4d7a2cc4e2eded"}
+[2019-01-29T15:07:39.299] [INFO] cheese - 响应时间为:0.006s
+[2019-01-29T15:51:21.830] [INFO] cheese - 响应时间为:0.018s
+[2019-01-29T16:56:40.908] [INFO] cheese - 响应时间为:0.012s
+[2019-01-29T16:57:14.972] [INFO] cheese - 响应时间为:0.003s
