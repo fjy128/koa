@@ -20,6 +20,7 @@
       <h5 :title="item.title" @click="gotoDetail" :style="{cursor:'pointer'}">{{item.title}}</h5>
       <div class="room-props">
         <span class="room-prop-rate" v-if="item.starRating">{{item.starRating/10}}分</span>
+        <span class="room-prop-rate" v-else>未评分</span>
         <span class="room-prop">{{item.rentLayoutDesc}}</span>
         <span class="room-prop">{{item.bedCount}}张床</span>
         <span class="room-prop">{{item.guestNumberDesc}}</span>
@@ -70,7 +71,7 @@ export default {
   watch: {
     parentIdxArr: function (val) {
       this.seleTagArr = val
-      // this.getCityList()
+      this.getCityList()
       console.log(666, val)
     }
   },
