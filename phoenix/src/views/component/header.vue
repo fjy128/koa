@@ -1,14 +1,16 @@
 <template>
 <el-row class="container">
   <el-col :span="16">
-    <img src="./img/home.svg"/>
-    <span>住的不一样</span>
+    <router-link to="/">
+      <img src="./img/home.svg"/>
+      <span>住的就是不一样</span>
+    </router-link>
   </el-col>
   <el-col :span="5" class="lInfo">
     <el-row>
       <el-col :span="8">登录/注册</el-col>
       <el-col :span="8">手机版</el-col>
-      <el-col :span="8">成为房东</el-col>
+      <el-col :span="8">房东</el-col>
     </el-row>
   </el-col>
 </el-row>
@@ -23,7 +25,7 @@ export default {
 @logoWidth: 64px;
 @logoHeight: 64px;
 @padding15: 30px;
-@color: #646566;
+@color: #3d3e3f;
 @borderColor: #ffcd10;
 @hederHoverColor: #eee;
 @fontSize12: 12px;

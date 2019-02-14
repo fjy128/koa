@@ -1,7 +1,7 @@
 <template>
 <div>
-<condition-list></condition-list>
-<product-grid></product-grid>
+<condition-list @getIdxArr="getIdxArr"></condition-list>
+<product-grid :parentIdxArr="indexArr"></product-grid>
 </div>
 </template>
 <script>
@@ -11,7 +11,13 @@ export default {
   components: { conditionList, productGrid },
   data () {
     return {
-
+      indexArr: []
+    }
+  },
+  methods: {
+    getIdxArr (arr) {
+      this.indexArr = arr
+      // console.log(11111144, arr)
     }
   }
 }

@@ -9,7 +9,8 @@
               <div class="center">
                  <h3>城市：{{item.cityName}}市</h3>
                  <p>地区：{{item.districtName}}</p>
-                 <p>开放时间：{{$common.fmt('yyyy-MM-dd ',item.firstOnSaleTime)}}</p>
+                  <p>开放时间：{{$common.fmt('yyyy-MM-dd ',item.firstOnSaleTime)}}</p>
+                 <p>住房设施：{{item.rentLayoutRoom}}厅 {{item.layoutRoom}}室 {{item.layoutKitchen}}厨 {{item.layoutWc}}卫 {{item.layoutHall}}走廊</p>
               </div>
 
             </div>

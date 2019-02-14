@@ -7,6 +7,12 @@ const chengdu = require('../public/json/chengdu.json')
 const guanzhou = require('../public/json/guanzhou.json')
 const hangzhou = require('../public/json/hangzhou.json')
 const shenzhen = require('../public/json/shenzhen.json')
+const tagSH = require('../public/json/tabsList_shanghai.json')
+const tagBJ = require('../public/json/tabsList_beijing.json')
+const tagCD = require('../public/json/tabsList_chengdu.json')
+const tagGZ = require('../public/json/tabsList_guangzhou.json')
+const tagHZ = require('../public/json/tabsList_hangzhou.json')
+const tagSZ = require('../public/json/tabsList_shenzhen.json')
 
 /**获取banner轮播图**/
 router.get('/banner', async (ctx, next) => {
@@ -85,7 +91,7 @@ router.get('/cityhouse', async (ctx, next) => {
 router.get('/product', async (ctx, next) => {
   let Data = [];
   let {
-    page = 1, size = 9, id = '310100'
+    page = 1, size = 9, id = '310100',seletag=[]
   } = ctx.query;
   let ID = id.toString()
 
@@ -99,13 +105,36 @@ router.get('/product', async (ctx, next) => {
   }
 
   Data = cityObj[ID]
+  console.log(seletag)
   let arr = Data.slice((page - 1) * size, (page - 1) * size + size)
   ctx.body = {
     code: 200,
     data: arr,
     total: Data.length,
-    page,
+    page:parseInt(page),
     size
+  }
+})
+
+/**获取每个城市头部标签列表**/
+router.get('/tagList', async (ctx, next) => {
+  let Data = [];
+  let { id = '310100'} = ctx.query;
+  let ID = id.toString()
+  let cityObj = {
+    '310100': tagSH,
+    '110100': tagBJ,
+    '510100': tagCD,
+    '440100': tagGZ,
+    '330100': tagHZ,
+    '440300': tagSH,
+  }
+  Data = cityObj[ID]
+  ctx.body = {
+    message:'成功',
+    code: 200,
+    data: Data,
+    total: Data.length,
   }
 })
 

@@ -11,12 +11,11 @@
     </dt>
     <dd>
       <div class="room-tags" :style="{position:'relative'}">
-        <i class="room-tag" v-for="(tag,tagIdx) in item.productTagList" v-if=" tagIdx <= 3" :key="tagIdx" >{{tag.tagName}}</i>
+        <i class="room-tag" v-for="(tag,tagIdx) in item.productTagList" v-if="tagIdx <= 3" :key="tagIdx" >{{tag.tagName}}</i>
         <span :style="{position:'absolute',right:'5px',fontSize:'12px',color:'#999',cursor:'pointer'}"  @mouseenter="enter(item.productId)" @mouseleave="leave()">查看更多</span>
         <div class="card" v-if="isshowTaglabel&&showTagIdex===item.productId">
            <i class="room-tag" v-for="(tag,tagIdx) in item.productTagList"  :key="tagIdx" >{{tag.tagName}}</i>
         </div>
-
       </div>
       <h5 :title="item.title" @click="gotoDetail" :style="{cursor:'pointer'}">{{item.title}}</h5>
       <div class="room-props">
@@ -41,7 +40,9 @@
   <div :style="{textAlign:'center'}">
     <el-pagination
     layout="prev, pager, next"
-    :total="50">
+    :total="totalPage"
+    :page-size="9"
+    @current-change="changepage">
   </el-pagination>
   </div>
 
@@ -49,19 +50,39 @@
 </template>
 <script>
 export default {
+  props: {
+    parentIdxArr: {
+      type: Array,
+      default: []
+    }
+  },
+
   data () {
     return {
+      seleTagArr: [],
       DataList: [],
       isshowTaglabel: false,
-      showTagIdex: 0
+      showTagIdex: 0,
+      page: 1,
+      totalPage: 0
+    }
+  },
+  watch: {
+    parentIdxArr: function (val) {
+      this.seleTagArr = val
+      // this.getCityList()
+      console.log(666, val)
     }
   },
   mounted () {
     this.getCityList()
   },
   methods: {
+    changepage (page) {
+      this.page = page
+      this.getCityList()
+    },
     enter (index) {
-      console.log(index)
       this.isshowTaglabel = true
       this.showTagIdex = index
     },
@@ -79,12 +100,19 @@ export default {
       })
     },
     getCityList () {
-      this.$axios.get(`${this.$api}/product`, { params: { id: this.$route.params.cityId } })
+      this.DataList = []
+      this.$axios.get(`${this.$api}/product`, {
+        params: {
+          id: this.$route.params.cityId,
+          page: this.page,
+          seletag: this.seleTagArr
+        }
+      })
         .then(res => {
           let Datas = res.data
-          console.log(Datas)
           if (Datas.code === 200) {
             this.DataList = Datas.data
+            this.totalPage = Datas.total
           }
         })
         .catch(error => {
@@ -122,6 +150,18 @@ export default {
         padding: 0 6px;
         border-radius: 2px;
       }
+      img{
+        position:relative;
+        &::after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url('../../home/img/banner1.jpg') no-repeat center;
+      }
+        }
     }
     dd {
       .room-tags {

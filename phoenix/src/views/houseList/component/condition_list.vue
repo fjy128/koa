@@ -1,7 +1,7 @@
 <template>
 <div class="condition">
   <ul>
-    <li v-for="(item,index) in list" :key="index" @click="changIndx(index)" :class="listIndx==index+1?'act':''">{{item}}</li>
+    <li v-for="(item,index) in list" :key="index" @click="changIndx(item.id)" :class="indexArr.indexOf(item.id)!==-1?'act':''">{{item.value}}</li>
   </ul>
 </div>
 </template>
@@ -9,15 +9,37 @@
 export default {
   data () {
     return {
-      listIndx: 0,
-      list: ['立即确认', '可做饭', '超赞房东', '近地铁', '有停车位', '适合情侣', '近外滩', '性价比高', '房东开发票', '一室一厅', '适合亲子', '榛果保洁',
-        '自助入住', 'Loft', '景观房', '朋友结伴', '别墅轰趴', '可带宠物', '网红民宿', 'INS风', 'TOP美宿', '花园房', '洋房', '青旅', '两室一厅']
+      indexArr: [],
+      list: []
+
     }
   },
+  mounted () {
+    this.getTag()
+  },
   methods: {
+    getTag () {
+      this.list = []
+      this.$axios.get(`${this.$api}/tagList`, { params: { id: this.$route.params.cityId } })
+        .then(res => {
+          let Datas = res.data
+          // console.log(Datas)
+          if (Datas.code === 200) {
+            this.list = Datas.data.normalTags
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
     changIndx (idx) {
-      console.log(idx)
-      this.listIndx = idx + 1
+      if (this.indexArr.indexOf(idx) === -1) {
+        this.indexArr.push(idx)
+      } else {
+        let delidx = this.indexArr.indexOf(idx)
+        this.indexArr.splice(delidx, 1)
+      }
+      this.$emit('getIdxArr', this.indexArr)
     }
   }
 }
@@ -29,7 +51,6 @@ export default {
   border-color: #eeeff3;
   border-style: solid;
   border-width: 1px 0;
-  // position: absolute
   left: 0;
   right: 0;
   ul {
@@ -54,11 +75,12 @@ export default {
       outline: none;
       display: block;
       padding: 0 10px;
-      color: #333;
+      color: #222;
       cursor: pointer;
       margin-bottom: 0;
       &.act {
         background: #fecd0f;
+        color:#fff;
         background: -webkit-gradient(
           linear,
           right top,
